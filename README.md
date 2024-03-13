@@ -1,1 +1,0 @@
-# LINUXtips-Giropops-Senhas

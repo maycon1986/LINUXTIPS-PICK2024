@@ -13,3 +13,4 @@ docker container run -d -p 5000:5000 --name giropops-senhas --env REDIS_HOST=red
 ## Passo 4 - Remover o ambiente
 docker container rm -f giropops-senhas redis
 docker image rm -f <IMAGE ID REDIS> <IMAGE ID GIROPOPS-SENHA>
+docker network rm network-lab

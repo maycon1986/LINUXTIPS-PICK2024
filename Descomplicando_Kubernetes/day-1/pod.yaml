@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   labels:
     run: deltcom-web
-  name: deltcom-web-2
+  name: deltcom-web
 spec:
   containers:
   - image: nginx

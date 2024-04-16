@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+  name: nginx-deployment
+  namespace: giropops
+spec:
+  replicas: 14
+  revisionHistoryLimit: 10 # Guarda os ultimas 10 revisões
+  selector: # define quais pods deve controlar
+    matchLabels: # Essa opção tem as labels que  o deploy vai procurar para criar.
+      app: nginx-deployment
+  strategy:  # Estrategia do deployment
+    #type: Recreate # Ele mata tudo e sobe tudo de uma vez. "O Ambiente para"
+     type: RollingUpdate
+     rollingUpdate:
+       maxSurge: 1 # pode ter ate 1 pod a mais do que eu pedi no arquivo
+       maxUnavailable: 2 # Vai atualizar de 2 em 2
+
+# Criação do template que ira criar os pods 
+  template:  # Template de como os Pods devem se comportarem
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - image: nginx:1.17.0
+        name: nginx
+        resources:
+          limits:
+            cpu: 0.9
+            memory: 256Mi
+          requests:
+            cpu: 0.4
+            memory: 64Mi
+    

@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - image: nginx:1.19.1
+        name: nginx
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 256Mi
+          requests:
+            cpu: 0.25
+            memory: 128Mi
+        
+        #livenessProbe verifica o container, se falhar ele restarta 
+        livenessProbe: # Em tempos em tempos verifica se o container esta vivo
+          #---
+          #tcpSocket: # Verifica portas
+          #  port: 80
+          #---          
+          httpGet:
+            path: /
+            port: 80 # opcional
+          #---
+          initialDelaySeconds: 10 # Quando subir o pod, ele aguarda para iniciar os teste.
+          periodSeconds: 10 # Ele vai rodar a cada x segundos
+          timeoutSeconds: 5 # Se o teste não funcionar ele aguarda x segundos para dar timeout
+          failureThreshold: 3  # Quantas vezes consegue falhar antes
+        #readinessProbe se falhar o kubernetes tira esse pod. quando ele voltar funcionar ele volta.
+        readinessProbe:
+          exec:
+            command:
+            - curl
+            - -f
+            - http://localhost:80/
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+          successThreshold: 1 # Realiza o teste x vezes para informar que esta com sucesso
+        #startupProbe é usado para saber se um processo do container ja esta pronto a ser executado, e iniciado somente uma vez quando inicia o container
+        startupProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3

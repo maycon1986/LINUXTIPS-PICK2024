@@ -1,0 +1,7 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: giropos
+provisioner: kubernetes.io/no-provisioner # Se não estiver utilizando nenhum provider, utiliza o no, para criar manual.
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer # Fica aguardando o primeiro consume para criar.

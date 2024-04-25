@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    storage: nfs
+  name: meu-pv-nfs
+spec:
+  capacity: 
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy:  Retain  #Retirar o volume quando a PVC for excluída.
+  nfs:
+    server: 192.168.18.129
+    path: "/mnt/nfs"
+  storageClassName: giropos

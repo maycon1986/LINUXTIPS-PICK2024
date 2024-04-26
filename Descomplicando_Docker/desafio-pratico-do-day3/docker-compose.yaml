@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  giropops-senhas:
+    image: mayconcarvalho/linuxtips-giropops-senhas:chainguard
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis
+    image: cgr.dev/chainguard/redis
+
+networks:
+  giropops-senhas:
+    driver: bridge

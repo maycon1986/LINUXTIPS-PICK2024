@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: nginx-podmonitor
+  labels:
+    app: nginx
+spec:
+  namespaceSelector:
+    matchNames:
+      - default
+  selector: # seletor para identificar os pods que serão monitorados
+    matchLabels: # labels que identificam os pods que serão monitorados
+      app: nginx-pod
+  podMetricsEndpoints:
+    - interval: 10s
+      path: /metrics
+      targetPort: 9113

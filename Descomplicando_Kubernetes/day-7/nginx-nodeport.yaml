@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-nodeport
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      name: http
+      targetPort: 80 # Porta do container
+      nodePort: 32000 # Opcional range da porta 3000 - 32767
+  type: NodePort  

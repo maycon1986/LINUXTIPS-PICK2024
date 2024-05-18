@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet # Tipo do recurso que estamos criando, no caso, um StatefulSet
 metadata:
-  name: nginx
+  name: nginx-name
 spec:
-  serviceName: "nginx"
+  serviceName: "nginx1" # serviceName é utilizado no StatefulSet, nome do serviço do headless.
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: nginx2
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx2
     spec:
       containers:
       - name: nginx

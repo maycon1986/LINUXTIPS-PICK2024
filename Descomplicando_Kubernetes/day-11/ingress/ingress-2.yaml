@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: giropops-senhas
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: / # Independente do path que eu informaro nginx vai direcionar para o /
+  name: giropops-senhas-static
+  #annotations:
+  #  nginx.ingress.kubernetes.io/rewrite-target: / # Independente do path que eu informaro nginx vai direcionar para o /
 spec:
   rules:
   - http:
       paths:
-      - path: /giropops-senhas
+      - path: /static
         pathType: Prefix
         backend:
           service:

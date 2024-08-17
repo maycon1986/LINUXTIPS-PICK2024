@@ -16,3 +16,7 @@ kubectl wait --namespace ingress-nginx \
 
 # Verificando a classe do controller
 k get ingressclasses.networking.k8s.io
+
+# Criação de um pod nginx e um servico
+k run nginx --image nginx --port 80
+k expose pod nginx

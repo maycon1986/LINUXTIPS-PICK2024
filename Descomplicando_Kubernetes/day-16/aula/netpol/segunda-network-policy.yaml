@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: segunda-netpol
+  namespace: giropops
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+  - from:
+# Quando utilizo os - antes do namespaceSelector,
+# indica que o ns pode ser giropops ou ingress-nginx
+#    - namespaceSelector:
+#        matchLabels:
+#          kubernetes.io/metadata.name: giropops
+#    - namespaceSelector:
+#        matchLabels:
+#          kubernetes.io/metadata.name: ingress-nginx
+
+# Outra forma para utilizar
+    - namespaceSelector:
+        matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: In
+          values: ["giropops", "ingress-nginx"]

@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: primeira-netpol
+  namespace: giropops
+spec:
+  podSelector:
+    matchLabels:
+      app: redis # Pode realizar o ingress todos os pod que tem essa label
+  ingress:
+  - from:
+    - podSelector: {}

@@ -4,32 +4,23 @@ kind: Deployment
 metadata:
   name: {{ $component }}
   labels:
-    apps: {{ $config.labels.app }}
+    {{- include "app.labels" $config | nindent 4 }}
 spec:
-  replicas: {{ $config.replicas }}
+  replicas: {{ $config.replicas | default 2}}
   selector:
     matchLabels:
       app: {{ $config.labels.app }}
   template:
     metadata:
       labels:
-        app: {{ $config.labels.app }}
+        {{- include "app.labels" $config | nindent 8 }}
     spec:
       containers:
       - name: {{ $component }}  
         image: {{ $config.image }}
         ports:
-        {{- range $config.ports }}
-        - containerPort: {{ .port }}
-        {{- end }}
-        resorces:
-          requests:
-            memory: {{ $config.resources.requests.memory }}
-            cpu: {{ $config.resources.requests.cpu }}
-          limits:
-            memory: {{ $config.resources.limits.memory }}
-            cpu: {{ $config.resources.limits.cpu }}
+        {{- include "app.ports" $config | nindent 10 }}
+        resources:
+          {{- include "app.resources" $config | nindent 12 }}
 ---
 {{- end }}
-        
-  

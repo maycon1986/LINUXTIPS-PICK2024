@@ -2,4 +2,4 @@ argocd:
   giropopsSenhas:
     enabled: true
   randomLogger:
-    enabled: false
+    enabled: true

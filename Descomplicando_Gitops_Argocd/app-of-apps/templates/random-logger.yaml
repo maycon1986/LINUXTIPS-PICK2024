@@ -1,0 +1,21 @@
+{{-if .Values.radomlogger.enabled -}}
+  apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    name: random-logger
+    namespace: argocd
+  spec:
+    destination:
+      namespace: random-logger
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: Descomplicando_Gitops_Argocd/random-logger/helm
+      repoURL: https://github.com/maycon1986/LINUXTIPS-PICK2024.git
+      targetRevision: feat/day2
+    syncPolicy:
+      automated:
+        selfHeal: true
+      syncOptions:
+      - CreateNamespace=true
+{{- end }}

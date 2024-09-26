@@ -13,7 +13,7 @@ spec:
     helm:
       parameters:
         - name: "argocd.giropopsSenhas.enabled"
-          value: "false"
+          value: "true"
         - name: "argocd.randomLogger.enabled"
           value: "true"  
     repoURL: 'https://github.com/maycon1986/LINUXTIPS-PICK2024.git'

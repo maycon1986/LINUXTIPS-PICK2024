@@ -13,15 +13,15 @@ spec:
     helm:
       parameters:
         - name: "argocd.giropopsSenhas.enabled"
-          value: false
+          value: "false"
         - name: "argocd.randomLogger.enabled"
-          value: true
-  
+          value: "true"  
     repoURL: 'https://github.com/maycon1986/LINUXTIPS-PICK2024.git'
     targetRevision: feat/day2 # Branch
   syncPolicy:
     automated:
       selfHeal: true # True ele sempre vai respeitar o que esta no repositorio, mesmo alterando diretamente no cluster.
+      prune: true
     syncOptions:
       - CreateNamespace=true
-      - PruneLast=true # Para realiar o delete.
+      - PruneLast=true # Para realizar o delete.

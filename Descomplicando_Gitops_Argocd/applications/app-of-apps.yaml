@@ -10,12 +10,12 @@ spec:
   project: default
   source:
     path: Descomplicando_Gitops_Argocd/app-of-apps
-    helm:
-      parameters:
-        - name: "argocd.giropopsSenhas.enabled"
-          value: "false"
-        - name: "argocd.randomLogger.enabled"
-          value: "false"  
+#    helm:
+#      parameters:
+#        - name: "argocd.giropopsSenhas.enabled"
+#          value: "false"
+#        - name: "argocd.randomLogger.enabled"
+#          value: "false"  
     repoURL: https://github.com/maycon1986/LINUXTIPS-PICK2024.git
     targetRevision: feat/day2 # Branch
   syncPolicy:

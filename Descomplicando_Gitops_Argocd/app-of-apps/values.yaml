@@ -1,5 +1,5 @@
-argocd:
-  giropopsSenhas:
-    enabled: false
-  randomLogger:
-    enabled: false
+# argocd:
+#   giropopsSenhas:
+#     enabled: false
+#   randomLogger:
+#     enabled: false

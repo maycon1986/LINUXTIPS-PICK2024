@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: Descomplicando_Gitops_Argocd/app-of-apps
+    path: descomplicando-gitops-argocd/app-of-apps
 #    helm:
 #      parameters:
 #        - name: "argocd.giropopsSenhas.enabled"

@@ -4,19 +4,17 @@ metadata:
   name: giropops-senhas
   namespace: argocd
 spec:
-  project: default
+  project: 'default'
   source:
     helm: {}
     repoURL: 'https://github.com/maycon1986/LINUXTIPS-PICK2024.git'
     targetRevision: feat/day2
-    path: Descomplicando_Gitops_Argocd/giropops-senhas/helm
+    path: descomplicando-gitops-argocd/giropops-senhas/helm
   destination:
     namespace: giropops-senhas
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
   syncPolicy:
     automated:
-      selfHeal: true # Respeita o que esta no repositório.
-      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
-    - PruneLast=true

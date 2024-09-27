@@ -10,7 +10,7 @@
       server: https://kubernetes.default.svc
     project: default
     source:
-      path: giropops-senhas/helm
+      path: Descomplicando_Gitops_Argocd/giropops-senhas/helm
       repoURL: https://github.com/maycon1986/LINUXTIPS-PICK2024.git
       targetRevision: feat/day2
     syncPolicy:

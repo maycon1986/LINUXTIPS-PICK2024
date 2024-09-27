@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: giropops-senhas
+  namespace: argocd
+spec:
+  project: 'default'
+  source:
+    helm: {}
+    repoURL: 'https://github.com/maycon1986/LINUXTIPS-PICK2024.git'
+    targetRevision: feat/day2
+    path: descomplicando-gitops-argocd/giropops-senhas/helm
+  destination:
+    namespace: giropops-senhas
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

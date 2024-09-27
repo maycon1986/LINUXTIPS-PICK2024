@@ -2,7 +2,7 @@
   apiVersion: argoproj.io/v1alpha1
   kind: Application
   metadata:
-    name: giropops-senhas
+    name: giropops-senhas1
     namespace: argocd
   spec:
     destination:

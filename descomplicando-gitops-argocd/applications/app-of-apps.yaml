@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+    # - resources-finalizer.argocd.argoproj.io/background
 spec:
   destination:
     namespace: argocd

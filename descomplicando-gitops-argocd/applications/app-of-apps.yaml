@@ -3,9 +3,8 @@ kind: Application
 metadata:
   name: app-of-apps
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-  # - resources-finalizer.argocd.argoproj.io/background
+  #finalizers:
+  #- resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: argocd
@@ -16,7 +15,7 @@ spec:
     helm:
       parameters:
       - name: "argocd.giropopsSenhas.enabled"
-        value: "true"
+        value: "false"
       - name: "argocd.randomLogger.enabled"
         value: "false"
     repoURL: https://github.com/maycon1986/LINUXTIPS-PICK2024.git
@@ -24,7 +23,7 @@ spec:
   syncPolicy:
     automated:
       selfHeal: true
-      prune: true
+      #prune: true
     syncOptions:
     - CreateNamespace=true 
-      PruneLast=true
+      #PruneLast=true

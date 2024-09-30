@@ -1,6 +1,5 @@
 argocd:
   giropopsSenhas:
     enabled: false
-     #replicas: 5
   randomLogger:
     enabled: false

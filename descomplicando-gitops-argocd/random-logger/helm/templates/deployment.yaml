@@ -2,6 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
   labels:
     app: {{ .Release.Name }}-random-logger
   name: {{ .Release.Name }}-random-logger

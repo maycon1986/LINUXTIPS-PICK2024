@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: giropops-senhas
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io  
 spec:
   destination:
     namespace: giropops-senhas
@@ -17,5 +19,6 @@ spec:
     automated:
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true 
+    - CreateNamespace=true
+      PruneLast=true
 {{ end }}

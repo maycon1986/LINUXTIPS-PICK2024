@@ -17,7 +17,7 @@ spec:
       - name: "argocd.giropopsSenhas.enabled"
         value: "false"
       - name: "argocd.randomLogger.enabled"
-        value: "true"
+        value: "false"
     repoURL: https://github.com/maycon1986/LINUXTIPS-PICK2024.git
     targetRevision: feat/day2
   syncPolicy:

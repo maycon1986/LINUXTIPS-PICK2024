@@ -13,7 +13,7 @@ spec:
     targetRevision: 7.0.19
     helm:
       valueFiles:
-      - $values/grafana/values.yaml
+      - $values/descomplicando-gitops-argocd/grafana/values.yaml
       parameters:
       - name: "ingress.hosts[0]"
         value: "{{ .Values.argocd.grafana.ingress }}"

@@ -12,7 +12,7 @@ spec:
     targetRevision: 15.7.1
     helm:
       valueFiles:
-      - $values/prometheus/values.yaml
+      - $values/descomplicando-gitops-argocd/prometheus/values.yaml
       parameters:
       - name: "ingress.hosts[0]"
         value: "{{ .Values.argocd.prometheus.ingress }}"

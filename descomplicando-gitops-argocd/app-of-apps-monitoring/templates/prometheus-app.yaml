@@ -16,7 +16,7 @@ spec:
       parameters:
       - name: "ingress.hosts[0]"
         value: "{{ .Values.argocd.prometheus.ingress }}"
-  - repoURL: 'https://github.com/bernardolsp/descomplicando-gitops-no-kubernetes-argocd.git'
+  - repoURL: 'https://github.com/maycon1986/LINUXTIPS-PICK2024.git'
     targetRevision: feat/day2
     ref: values
   syncPolicy:

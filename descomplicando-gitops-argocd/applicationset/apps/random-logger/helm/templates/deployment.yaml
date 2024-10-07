@@ -5,6 +5,7 @@ metadata:
   labels:
     app: {{ .Release.Name }}-random-logger
   name: {{ .Release.Name }}-random-logger
+  namespace: random-logger
 spec:
   replicas: {{ .Values.randomLogger.replicas }}
   selector:

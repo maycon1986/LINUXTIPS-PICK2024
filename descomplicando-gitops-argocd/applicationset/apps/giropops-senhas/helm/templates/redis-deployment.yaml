@@ -5,6 +5,7 @@ metadata:
   labels:
     app: redis
   name: redis-deployment
+  namespace: giropops-senhas
 spec:
   replicas: {{ .Values.redis.replicas }}
   selector:

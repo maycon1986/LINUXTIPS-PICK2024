@@ -5,7 +5,6 @@ metadata:
   labels:
     app: {{ .Release.Name }}-giropops-senhas
   name: {{ .Release.Name }}-giropops-senhas
-  namespace: giropops-senhas
 spec:
   replicas: {{ .Values.giropopsSenhas.replicas }}
   selector:

@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addons
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/maycon1986/LINUXTIPS-PICK2024.git
+      revision: feat/day3
+      directories:
+      - path: descomplicando-gitops-argocd/applicationset/apps/*/helm
+      - path: descomplicando-gitops-argocd/applicationset/apps/prometheus/helm
+        exclude: true
+      - path: descomplicando-gitops-argocd/applicationset/apps/grafana/helm
+        exclude: true        
+  template:
+    metadata:
+      name: '{{index .path.segments 3}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/maycon1986/LINUXTIPS-PICK2024.git
+        targetRevision: feat/day3
+        path: '{{.path.path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{index .path.segments 3}}'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+        - CreateNamespace=true

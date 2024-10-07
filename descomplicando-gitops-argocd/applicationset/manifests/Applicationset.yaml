@@ -12,10 +12,8 @@ spec:
       revision: feat/day3
       directories:
       - path: descomplicando-gitops-argocd/applicationset/apps/*/helm
-      - path: descomplicando-gitops-argocd/applicationset/apps/prometheus/helm
-        exclude: true
-      - path: descomplicando-gitops-argocd/applicationset/apps/grafana/helm
-        exclude: true        
+#      - path: descomplicando-gitops-argocd/applicationset/apps/grafana/helm
+#        exclude: true        
   template:
     metadata:
       name: '{{index .path.segments 2}}'
